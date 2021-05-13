@@ -34,10 +34,7 @@ class MyClient(discord.Client):
         if message.content.startswith('tag everyone'):
                 s = ''
                 for members in self.ids:
-                    if members==self.ids[-1]:
-                        s+='<@{}>'.format(members)
-                    else:
-                        s+='<@{}>,'.format(members)
+                    s+= '<@{}>'.format(members) if members==self.ids[-1] else '<@{}>,'.format(members)
                 await channel.send("{} Please report for your shift".format(s))
 
 token=""
