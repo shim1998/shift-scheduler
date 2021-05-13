@@ -1,9 +1,9 @@
 import asyncio
 import discord
 import json
-
 from fetch import Fetch
-
+from dotenv import load_dotenv
+load_dotenv()
 class MyClient(discord.Client):
 
     async def on_ready(self):
