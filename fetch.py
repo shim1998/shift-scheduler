@@ -1,6 +1,8 @@
 import json
 from datetime import datetime
 from fetchdata import FetchData
+from dotenv import load_dotenv
+load_dotenv()
 class Fetch:
     def getrownumber(self,hour,date):
         row=(hour//2)+3+(12 if date%2==0 else 0)
