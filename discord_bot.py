@@ -11,12 +11,13 @@ class MyClient(discord.Client):
         self.required_members=[]
         for guild in self.guilds:
             for channel in guild.channels:
-                pass
-                # print(channel.id,channel.name)
+                # pass
+                print(channel.id,channel.name)
         for guild in self.guilds:
             data = guild.members
             for x in data:
-                # print(x.name,x.id,x.nick)
+                if x.name=='REAPER':
+                    print(x.name,x.id,x.nick)
                 self.members.append([x.name,x.id,x.nick])
         print('Logged on as {0}!'.format(self.user))
         # await asyncio.sleep(60 * 50 * 2)
@@ -31,14 +32,14 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         print('Message from {0.author}: {0.content}'.format(message))
         channel = message.channel
-        channel.id = 840581432660852746
-        print(self.ids)
-        print(self.members_to_tag)
+        channel.id = 834880171944443937
         if message.content.startswith('hello'):
             await channel.send("Sup {0.author}: {0.content}".format(message))
         if message.content.startswith('tag everyone'):
-            for spam in self.members:
-                await channel.send("HI <@{0}>".format(spam[1]))
+                s = ''
+                for members in self.ids:
+                    s+='<@{}>,'.format(members)
+                await channel.send("{} \n Please report for your shift".format(s))
 
 token=""
 with open('discord-token.json','r') as file:

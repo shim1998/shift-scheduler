@@ -15,7 +15,7 @@ class Fetch:
         Responders = data.getdata(RANGE='C'+str(row))
         Verifiers = data.getdata(RANGE='D'+str(row))
         Researchers = data.getdata(RANGE='E'+str(row))
-        Responders_List=str(Responders[0][0]).split(',')
-        Verifiers_List=str(Verifiers[0][0]).split(',')
-        Researchers_List=str(Researchers[0][0]).split(',')
+        Responders_List=str(Responders[0][0]).split(', ')
+        Verifiers_List=str(Verifiers[0][0]).split(', ')
+        Researchers_List=str(Researchers[0][0]).split(', ')
         return Responders_List+Verifiers_List+Researchers_List
