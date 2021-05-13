@@ -9,10 +9,9 @@ class MyClient(discord.Client):
     async def on_ready(self):
         self.members=[]
         self.required_members=[]
-        for guild in self.guilds:
-            for channel in guild.channels:
-                # pass
-                print(channel.id,channel.name)
+        # for guild in self.guilds:
+        #     for channel in guild.channels:
+                # print(channel.id,channel.name)
         for guild in self.guilds:
             data = guild.members
             for x in data:
