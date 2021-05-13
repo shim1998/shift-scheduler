@@ -3,5 +3,4 @@ venv
 __pycache__
 token.json
 credentials.json
-test.py
 discord-token.json
