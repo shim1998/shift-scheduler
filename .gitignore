@@ -4,3 +4,4 @@ __pycache__
 token.json
 credentials.json
 discord-token.json
+.env
