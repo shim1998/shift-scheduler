@@ -8,7 +8,7 @@ def getrownumber(hour,date):
 time = datetime.today()
 hour = time.hour
 date = time.day
-row = getrownumber(16,14)
+row = getrownumber(hour,date)
 data = FetchData()
 Responders = data.getdata(RANGE='C'+str(row))
 Verifiers = data.getdata(RANGE='D'+str(row))
