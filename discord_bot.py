@@ -30,16 +30,16 @@ class MyClient(discord.Client):
                 self.members_to_tag.append(member[2])
 
     async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
         channel = message.channel
-        channel.id = 834880171944443937
-        if message.content.startswith('hello'):
-            await channel.send("Sup {0.author}: {0.content}".format(message))
+        channel.id = 840581432660852746
         if message.content.startswith('tag everyone'):
                 s = ''
                 for members in self.ids:
-                    s+='<@{}>,'.format(members)
-                await channel.send("{} \n Please report for your shift".format(s))
+                    if members==self.ids[-1]:
+                        s+='<@{}>'.format(members)
+                    else:
+                        s+='<@{}>,'.format(members)
+                await channel.send("{} Please report for your shift".format(s))
 
 token=""
 with open('discord-token.json','r') as file:
