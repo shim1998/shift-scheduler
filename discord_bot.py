@@ -29,7 +29,7 @@ class MyClient(discord.Client):
             await channel.send("Sup {0.author}: {0.content}".format(message))
         if message.content.startswith('tag everyone'):
             for spam in self.members:
-                await channel.send("HI <@"+str(spam[1])+">")
+                await channel.send("HI <@{0}>".format(spam[1]))
 
 token=""
 with open('discord-token.json','r') as file:
