@@ -18,4 +18,4 @@ class Fetch:
         Responders_List=str(Responders[0][0]).split(',')
         Verifiers_List=str(Verifiers[0][0]).split(',')
         Researchers_List=str(Researchers[0][0]).split(',')
-        return Researchers_List+Verifiers_List+Researchers_List
+        return Responders_List+Verifiers_List+Researchers_List
