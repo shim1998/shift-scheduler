@@ -11,7 +11,7 @@ class MyClient(discord.Client):
         self.required_members=[]
         # for guild in self.guilds:
         #     for channel in guild.channels:
-                # print(channel.id,channel.name)
+        #         print(channel.id,channel.name)
         for guild in self.guilds:
             data = guild.members
             for x in data:
@@ -30,7 +30,7 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         channel = message.channel
-        channel.id = 840581432660852746
+        channel.id = 842475416160698379
         if message.content.startswith('tag everyone'):
                 s = ''
                 for members in self.ids:
