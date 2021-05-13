@@ -1,17 +1,21 @@
 import discord
 import json
 
+from fetch import Fetch
+
 class MyClient(discord.Client):
 
     async def on_ready(self):
         self.members=[]
-        self.channels=[]
+        self.required_members=[]
+        self.members_to_ping = Fetch().return_data()
+        print(self.members_to_ping)
         for guild in self.guilds:
             for channel in guild.channels:
                 pass
                 # print(channel.id,channel.name)
         for guild in self.guilds:
-            data = list(guild.members)
+            data = guild.members
             for x in data:
                 # print(x.name,x.id,x.nick)
                 self.members.append([x.name,x.id,x.nick])
@@ -26,3 +30,13 @@ class MyClient(discord.Client):
         if message.content.startswith('tag everyone'):
             for spam in self.members:
                 await channel.send("HI <@"+str(spam[1])+">")
+
+token=""
+with open('discord-token.json','r') as file:
+    for data in file:
+        token+=data
+token = json.loads(token)
+intents = discord.Intents.default()
+intents.members = True
+client = MyClient(intents=intents)
+client.run(token["client-secret"])
