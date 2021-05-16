@@ -24,7 +24,7 @@ class MyClient(discord.Client):
         print(self.members_to_ping)
         self.ids,self.members_to_tag=[],[]
         for member in self.members:
-            if member[2] in self.members_to_ping:
+            if member[2] in self.members_to_ping or member[1] in self.members_to_ping:
                 self.ids.append(member[1])
                 self.members_to_tag.append(member[2])
 
@@ -32,10 +32,18 @@ class MyClient(discord.Client):
         channel = message.channel
         channel.id = 842475416160698379
         if message.content.startswith('tag everyone'):
-                s = ''
-                for members in self.ids:
-                    s+= '<@{}>'.format(members) if members==self.ids[-1] else '<@{}>,'.format(members)
-                await channel.send("{} Please report for your shift".format(s))
+            self.members_to_ping = Fetch().return_data()
+            print(self.members_to_ping)
+            self.ids,self.members_to_tag=[],[]
+            for member in self.members:
+                if member[2] in self.members_to_ping or member[0] in self.members_to_ping:
+                    self.ids.append(member[1])
+                    self.members_to_tag.append(member[2] if member[2] in self.members_to_ping else member[0])
+            print(self.members_to_tag)
+            s = ''
+            for members in self.ids:
+                s+= '<@{}>'.format(members) if members==self.ids[-1] else '<@{}>,'.format(members)
+            await channel.send("{} Please report for your shift".format(s))
 
 token=""
 with open('discord-token.json','r') as file:
